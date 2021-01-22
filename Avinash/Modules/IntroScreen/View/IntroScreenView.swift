@@ -8,19 +8,7 @@
 import UIKit
 import SnapKit
 
-class IntroScreenView: UIView {
-    var gradientBackgroundView: UIView = {
-        let obj = UIView()
-        obj.translatesAutoresizingMaskIntoConstraints = false
-        return obj
-    }()
-    
-    private var gradientBackgroundViewLayer: CAGradientLayer = {
-        let obj = CAGradientLayer()
-        obj.colors = [UIColor.MainScreenGradient.startColor.cgColor, UIColor.MainScreenGradient.endColor.cgColor]
-        return obj
-    }()
-    
+class IntroScreenView: BaseBackgroundedView {
     var heartButton: UIButton = {
         let obj = UIButton(type: .system)
         obj.setImage(UIImage(named: "heartIcon")?.withRenderingMode(.alwaysOriginal), for: .normal)
@@ -50,15 +38,8 @@ class IntroScreenView: UIView {
     private func setup() {
         backgroundColor = .white
         
-        addSubview(gradientBackgroundView)
-        gradientBackgroundView.layer.addSublayer(gradientBackgroundViewLayer)
-        
         addSubview(heartButton)
         addSubview(eyesButton)
-        
-        gradientBackgroundView.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
-        }
         
         heartButton.snp.makeConstraints { (make) in
             make.left.right.equalToSuperview().inset(SizeHelper.sizeW(52))
@@ -69,10 +50,5 @@ class IntroScreenView: UIView {
             make.left.right.equalToSuperview().inset(SizeHelper.sizeW(36))
             make.bottom.equalTo(heartButton.snp.top).offset(SizeHelper.sizeH(-129))
         }
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        gradientBackgroundViewLayer.frame = gradientBackgroundView.frame
     }
 }

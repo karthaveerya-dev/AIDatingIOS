@@ -8,3 +8,23 @@
 
 "search" = "Search";
 "sign_in" = "Sign in";
+"sign_in_with_email" = "Sign in with email";
+"sign_in_with_google" = "Sign in with Google";
+"sign_in_with_facebook" = "Sign in with Facebook";
+"sign_up_with_email" = "Sign up with email";
+"sign_up_with_google" = "Sign up with Google";
+"sign_up_with_facebook" = "Sign up with Facebook";
+"or" = "OR";
+"new_here" = "New here?";
+"have_an_account" = "Have an account?";
+"create_account" = "Create an account";
+"create_account_s" = "Create account";
+"welcome_back" = "Welcome back!";
+"enter_email_to_sign_in" = "Enter your email to sign in to your account";
+"next" = "Next";
+"name" = "Name";
+"email" = "Email";
+"password" = "Password";
+"passwordExt" = "Password (8+ characters)";
+"almost_there" = "Almost there!";
+"enter_password_to_sign_in_with" = "Enter your password to sign in with";

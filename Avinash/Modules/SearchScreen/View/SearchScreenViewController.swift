@@ -25,8 +25,8 @@ class SearchScreenViewController: UIViewController {
         //close screen navBar button
         let leftBarButton = UIBarButtonItem(customView: mainView.backButton)
         leftBarButton.customView?.snp.updateConstraints({ (make) in
-            make.width.equalTo(28)
-            make.height.equalTo(18)
+            make.width.equalTo(40)
+            make.height.equalTo(44)
         })
         navigationItem.leftBarButtonItem = leftBarButton
         

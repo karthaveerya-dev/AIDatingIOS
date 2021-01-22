@@ -21,9 +21,15 @@ class AuthorizationNavigationController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationBar.isTranslucent = true
+        navigationBar.backgroundColor = .clear
+        navigationBar.barTintColor = .clear
+        navigationBar.shadowImage = UIImage()
+        navigationBar.setBackgroundImage(UIImage(), for: .default)
+        
         // Intro screen must have authorization logic inside
         // depends on auth state it must open needed screen
-        let authorizationViewController = AuthorizationScreenViewController()
+        let authorizationViewController = AuthorizationScreenViewController(authType: .signIn)
         viewControllers = [authorizationViewController]
     }
 }

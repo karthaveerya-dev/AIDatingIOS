@@ -16,4 +16,8 @@ import UIKit
         static let startColor = UIColor.rgba(112, 27, 84, 1)
         static let endColor = UIColor.rgba(235, 81, 82, 1)
     }
+    
+    enum TextField {
+        static let error = UIColor.rgba(251, 210, 65, 1)
+    }
 }
