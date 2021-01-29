@@ -20,4 +20,8 @@ import UIKit
     enum TextField {
         static let error = UIColor.rgba(251, 210, 65, 1)
     }
+    
+    enum ActivityIndicator {
+        static let customPurple = UIColor.rgba(112, 27, 84, 1)
+    }
 }

@@ -31,5 +31,16 @@ class AuthorizationNavigationController: UINavigationController {
         // depends on auth state it must open needed screen
         let authorizationViewController = AuthorizationScreenViewController(authType: .signIn)
         viewControllers = [authorizationViewController]
+        
+        AuthorizationService.shared.delegate = self
+    }
+}
+
+//MARK: - Authorization service delegate
+extension AuthorizationNavigationController: AuthorizationServiceDelegate {
+    func authStateChanged(to state: AuthorizationService.AuthorizationState) {
+        if state == .authorized {
+            self.presentingViewController?.dismiss(animated: true, completion: nil)
+        }
     }
 }

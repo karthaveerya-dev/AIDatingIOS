@@ -1,9 +1,8 @@
 //
 //  AppMainNavigationController.swift
-//  Touristdoc
+//  AIDating
 //
-//  Created by Mihail Konoplitskyi on 28.01.2020.
-//  Copyright © 2020 4K-SOFT. All rights reserved.
+//  Created by Mihail Konoplitskyi on 29.01.2021.
 //
 
 import Foundation
@@ -22,14 +21,26 @@ class AppMainNavigationController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationBar.barStyle = .black
+        navigationBar.barStyle = .default
         navigationBar.backgroundColor = .clear
+        navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationBar.shadowImage = UIImage()
         navigationBar.isTranslucent = true
-        navigationBar.isHidden = true
         
         // Intro screen must have authorization logic inside
         // depends on auth state it must open needed screen
-        let introScreenVC = IntroScreenViewController()
-        viewControllers = [introScreenVC]
+        let mainScreenVC = MainScreenViewController()
+        viewControllers = [mainScreenVC]
+        
+        AuthorizationService.shared.delegate = self
+    }
+}
+
+//MARK: - heleprs and handlers
+extension AppMainNavigationController: AuthorizationServiceDelegate {
+    func authStateChanged(to state: AuthorizationService.AuthorizationState) {
+        if state == .noneAuthorized {
+            self.dismiss(animated: true, completion: nil)
+        }
     }
 }

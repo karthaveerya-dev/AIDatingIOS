@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.backgroundColor = .white
         
         if let window = window {
-            let appMainNavVC = AppMainNavigationController(nibName: nil, bundle: nil)
+            let appMainNavVC = IntroNavigationController(nibName: nil, bundle: nil)
             window.rootViewController = appMainNavVC
             window.makeKeyAndVisible()
         }
