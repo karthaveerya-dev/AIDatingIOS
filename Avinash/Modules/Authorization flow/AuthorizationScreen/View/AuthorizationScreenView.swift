@@ -131,6 +131,42 @@ class AuthorizationScreenView: BaseBackgroundedView {
         return obj
     }()
     
+    var termsAndConditionsTextView: UITextView = {
+        let obj = UITextView()
+        obj.isScrollEnabled = false
+        obj.backgroundColor = .clear
+        obj.isEditable = false
+        obj.isSelectable = true
+        
+        let termsAndConditionstAttributedTitle = NSMutableAttributedString(string: "using_services".localized() + "\n",
+                                                                           attributes: [.font: UIFont.ProximaNovaRegular(size: 17) as Any,
+                                                                                        .foregroundColor: UIColor.white])
+        let termsString = NSAttributedString(string: "terms".localized(),
+                                             attributes: [.font: UIFont.ProximaNovaBold(size: 16) as Any,
+                                                          .foregroundColor: UIColor.white,
+                                                          .link: "https://apple.com"])
+        let andString = NSAttributedString(string: " " + "and".localized() + " ",
+                                           attributes: [.font: UIFont.ProximaNovaRegular(size: 15) as Any,
+                                                        .foregroundColor: UIColor.white])
+        let privacyStatementString = NSAttributedString(string: "privacy_statement".localized(),
+                                                        attributes: [.font: UIFont.ProximaNovaBold(size: 16) as Any,
+                                                                     .foregroundColor: UIColor.white,
+                                                                     .link: "https://apple.com"])
+        
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = .center
+        
+        termsAndConditionstAttributedTitle.append(termsString)
+        termsAndConditionstAttributedTitle.append(andString)
+        termsAndConditionstAttributedTitle.append(privacyStatementString)
+        
+        termsAndConditionstAttributedTitle.addAttributes([.paragraphStyle: paragraphStyle], range: NSRange(location: 0, length: termsAndConditionstAttributedTitle.length))
+        
+        obj.linkTextAttributes = [.foregroundColor: UIColor.white]
+        obj.attributedText = termsAndConditionstAttributedTitle
+        return obj
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -150,6 +186,7 @@ class AuthorizationScreenView: BaseBackgroundedView {
         addSubview(signInWithGoogleButton)
         addSubview(signInWithFacebookButton)
         addSubview(createAccountButton)
+        addSubview(termsAndConditionsTextView)
         
         titleLabel.snp.makeConstraints { (make) in
             make.left.right.equalToSuperview()
@@ -196,6 +233,11 @@ class AuthorizationScreenView: BaseBackgroundedView {
         
         createAccountButton.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
+            make.top.equalTo(signInWithFacebookButton.snp.bottom).offset(SizeHelper.sizeH(56))
+        }
+        
+        termsAndConditionsTextView.snp.makeConstraints { (make) in
+            make.left.right.equalToSuperview().inset(8)
             make.bottom.equalTo(safeAreaLayoutGuide.snp.bottom)
         }
     }

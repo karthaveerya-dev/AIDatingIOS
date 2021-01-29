@@ -28,8 +28,10 @@
 "passwordExt" = "Password (8+ characters)";
 "almost_there" = "Almost there!";
 "enter_password_to_sign_in_with" = "Enter your password to sign in with";
-
-
+"using_services" = "By using our services you are argreeing to our";
+"and" = "and";
+"terms" = "Terms";
+"privacy_statement" = "Privacy Statement";
 
 //NETWORK ERRORS
 "error_parsing_json" = "Data from server is corrupted";
