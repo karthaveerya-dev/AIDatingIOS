@@ -7,6 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		874E8AAB25DB14C40055553F /* SettingsScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874E8AA825DB14C40055553F /* SettingsScreenViewController.swift */; };
+		874E8AAC25DB14C40055553F /* SettingsScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874E8AA925DB14C40055553F /* SettingsScreenView.swift */; };
+		874E8AB425DB14D80055553F /* UploadPhotosScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874E8AB125DB14D80055553F /* UploadPhotosScreenView.swift */; };
+		874E8AB525DB14D80055553F /* UploadPhotosScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874E8AB225DB14D80055553F /* UploadPhotosScreenViewController.swift */; };
+		874E8AC725DB1BC20055553F /* LookingForLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874E8AC625DB1BC20055553F /* LookingForLabel.swift */; };
+		874E8AD325DB1C4A0055553F /* Notification+name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874E8AD225DB1C4A0055553F /* Notification+name.swift */; };
+		874E8AE125DB2A580055553F /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874E8AE025DB2A580055553F /* LocationService.swift */; };
+		874E8AE425DB34110055553F /* GridCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874E8AE325DB34110055553F /* GridCollectionViewLayout.swift */; };
+		874E8AE725DB34A70055553F /* PhotoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874E8AE625DB34A70055553F /* PhotoModel.swift */; };
+		874E8AEB25DB35410055553F /* UserPhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874E8AEA25DB35410055553F /* UserPhotoCollectionViewCell.swift */; };
+		874E8AEE25DB35660055553F /* Reusable+cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874E8AED25DB35660055553F /* Reusable+cell.swift */; };
+		874E8B4C25DC7D380055553F /* ProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874E8B4B25DC7D380055553F /* ProfileService.swift */; };
+		874E8B5425DD64030055553F /* ProfileResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874E8B5325DD64030055553F /* ProfileResponseModel.swift */; };
 		877ED1AA25C366C0009F20A4 /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877ED1A925C366C0009F20A4 /* NetworkHelper.swift */; };
 		877ED1AE25C366D1009F20A4 /* AuthorizationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877ED1AD25C366D1009F20A4 /* AuthorizationService.swift */; };
 		877ED1BC25C3676B009F20A4 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877ED1BB25C3676B009F20A4 /* NetworkError.swift */; };
@@ -57,6 +70,19 @@
 
 /* Begin PBXFileReference section */
 		826D5E62CE966FC8B07C84A6 /* Pods_AIDating.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AIDating.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		874E8AA825DB14C40055553F /* SettingsScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsScreenViewController.swift; sourceTree = "<group>"; };
+		874E8AA925DB14C40055553F /* SettingsScreenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsScreenView.swift; sourceTree = "<group>"; };
+		874E8AB125DB14D80055553F /* UploadPhotosScreenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadPhotosScreenView.swift; sourceTree = "<group>"; };
+		874E8AB225DB14D80055553F /* UploadPhotosScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadPhotosScreenViewController.swift; sourceTree = "<group>"; };
+		874E8AC625DB1BC20055553F /* LookingForLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LookingForLabel.swift; sourceTree = "<group>"; };
+		874E8AD225DB1C4A0055553F /* Notification+name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+name.swift"; sourceTree = "<group>"; };
+		874E8AE025DB2A580055553F /* LocationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
+		874E8AE325DB34110055553F /* GridCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridCollectionViewLayout.swift; sourceTree = "<group>"; };
+		874E8AE625DB34A70055553F /* PhotoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoModel.swift; sourceTree = "<group>"; };
+		874E8AEA25DB35410055553F /* UserPhotoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPhotoCollectionViewCell.swift; sourceTree = "<group>"; };
+		874E8AED25DB35660055553F /* Reusable+cell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Reusable+cell.swift"; sourceTree = "<group>"; };
+		874E8B4B25DC7D380055553F /* ProfileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileService.swift; sourceTree = "<group>"; };
+		874E8B5325DD64030055553F /* ProfileResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileResponseModel.swift; sourceTree = "<group>"; };
 		877ED1A925C366C0009F20A4 /* NetworkHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
 		877ED1AD25C366D1009F20A4 /* AuthorizationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorizationService.swift; sourceTree = "<group>"; };
 		877ED1BB25C3676B009F20A4 /* NetworkError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
@@ -130,9 +156,86 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		874E8AA525DB14C40055553F /* SettingsScreen */ = {
+			isa = PBXGroup;
+			children = (
+				874E8AA625DB14C40055553F /* Models */,
+				874E8AA725DB14C40055553F /* View */,
+				874E8AAA25DB14C40055553F /* Services */,
+			);
+			path = SettingsScreen;
+			sourceTree = "<group>";
+		};
+		874E8AA625DB14C40055553F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		874E8AA725DB14C40055553F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				874E8AA825DB14C40055553F /* SettingsScreenViewController.swift */,
+				874E8AA925DB14C40055553F /* SettingsScreenView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		874E8AAA25DB14C40055553F /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		874E8AAE25DB14D80055553F /* UploadPhotosScreen */ = {
+			isa = PBXGroup;
+			children = (
+				874E8AAF25DB14D80055553F /* Models */,
+				874E8AB025DB14D80055553F /* View */,
+				874E8AB325DB14D80055553F /* Services */,
+			);
+			path = UploadPhotosScreen;
+			sourceTree = "<group>";
+		};
+		874E8AAF25DB14D80055553F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				874E8AE625DB34A70055553F /* PhotoModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		874E8AB025DB14D80055553F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				874E8AE925DB35390055553F /* Cells */,
+				874E8AB125DB14D80055553F /* UploadPhotosScreenView.swift */,
+				874E8AB225DB14D80055553F /* UploadPhotosScreenViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		874E8AB325DB14D80055553F /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		874E8AE925DB35390055553F /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				874E8AEA25DB35410055553F /* UserPhotoCollectionViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		877ED1AC25C366C6009F20A4 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				874E8AE025DB2A580055553F /* LocationService.swift */,
 				877ED1BE25C3679E009F20A4 /* API */,
 				877ED1BA25C3676B009F20A4 /* Error */,
 			);
@@ -152,6 +255,7 @@
 			children = (
 				877ED1BF25C367A7009F20A4 /* Models */,
 				877ED1AD25C366D1009F20A4 /* AuthorizationService.swift */,
+				874E8B4B25DC7D380055553F /* ProfileService.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -160,6 +264,7 @@
 			isa = PBXGroup;
 			children = (
 				877ED1C025C367AF009F20A4 /* DefaultResponseModel.swift */,
+				874E8B5325DD64030055553F /* ProfileResponseModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -221,6 +326,8 @@
 		87A0E03225C423130045E306 /* Main flow */ = {
 			isa = PBXGroup;
 			children = (
+				874E8AAE25DB14D80055553F /* UploadPhotosScreen */,
+				874E8AA525DB14C40055553F /* SettingsScreen */,
 				87A0E02725C422C80045E306 /* MainScreen */,
 			);
 			path = "Main flow";
@@ -377,6 +484,8 @@
 		87DFC76525BB63AE00CFD457 /* CustomUI */ = {
 			isa = PBXGroup;
 			children = (
+				874E8AE325DB34110055553F /* GridCollectionViewLayout.swift */,
+				874E8AC625DB1BC20055553F /* LookingForLabel.swift */,
 				87DFC76625BB63BA00CFD457 /* CustomTextField.swift */,
 			);
 			path = CustomUI;
@@ -465,8 +574,10 @@
 				87DFC76E25BB6B4800CFD457 /* String+validation.swift */,
 				877ED1CD25C3718B009F20A4 /* Application+topViewController.swift */,
 				87DFC77125BB6BA700CFD457 /* String+helpers.swift */,
+				874E8AED25DB35660055553F /* Reusable+cell.swift */,
 				87ECB53D25A8A60E00420BFB /* Color+Ext.swift */,
 				87EBF0F425C4AEB100444694 /* Range+Ext.swift */,
+				874E8AD225DB1C4A0055553F /* Notification+name.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -708,9 +819,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				877ED1AA25C366C0009F20A4 /* NetworkHelper.swift in Sources */,
+				874E8AAB25DB14C40055553F /* SettingsScreenViewController.swift in Sources */,
 				87ECB55725A8AA6E00420BFB /* SearchScreenViewController.swift in Sources */,
 				87DFC77225BB6BA700CFD457 /* String+helpers.swift in Sources */,
 				877ED1C725C36FB5009F20A4 /* ProgressHelperView.swift in Sources */,
+				874E8AE425DB34110055553F /* GridCollectionViewLayout.swift in Sources */,
+				874E8AE725DB34A70055553F /* PhotoModel.swift in Sources */,
 				87C5B07425A61721003538D7 /* IntroNavigationController.swift in Sources */,
 				87C5B05B25A61676003538D7 /* AppDelegate.swift in Sources */,
 				87DFC76B25BB63F300CFD457 /* ErrorBehaviour.swift in Sources */,
@@ -721,30 +835,40 @@
 				87C5B07C25A61749003538D7 /* IntroScreenView.swift in Sources */,
 				877ED1CB25C37091009F20A4 /* AlertHelper.swift in Sources */,
 				87DFC76225BB5FEF00CFD457 /* EnterEmailScreenView.swift in Sources */,
+				874E8AAC25DB14C40055553F /* SettingsScreenView.swift in Sources */,
 				87DFC78E25BB766C00CFD457 /* SignUpScreenViewController.swift in Sources */,
 				87ECB54525A8A7C900420BFB /* DeviceHelper.swift in Sources */,
+				874E8AC725DB1BC20055553F /* LookingForLabel.swift in Sources */,
 				877ED1CE25C3718B009F20A4 /* Application+topViewController.swift in Sources */,
 				87ECB54425A8A7C900420BFB /* Device+version.swift in Sources */,
 				87DFC77A25BB6C7D00CFD457 /* EnterPasswordScreenView.swift in Sources */,
 				87DFC76125BB5FEF00CFD457 /* EnterEmailScreenViewController.swift in Sources */,
 				87ECB54F25A8AA6700420BFB /* AuthorizationScreenView.swift in Sources */,
+				874E8AEE25DB35660055553F /* Reusable+cell.swift in Sources */,
 				87A0E02E25C422C80045E306 /* MainScreenView.swift in Sources */,
 				87ECB54625A8A7C900420BFB /* SizeHelper.swift in Sources */,
+				874E8AE125DB2A580055553F /* LocationService.swift in Sources */,
 				87ECB53E25A8A60E00420BFB /* Color+Ext.swift in Sources */,
 				87DFC76F25BB6B4800CFD457 /* String+validation.swift in Sources */,
 				87ECB56025A8AB9F00420BFB /* String+localized.swift in Sources */,
 				87DFC75525BB235300CFD457 /* Font+Ext.swift in Sources */,
 				87ECB56625A8ACEB00420BFB /* AuthorizationNavigationController.swift in Sources */,
+				874E8AEB25DB35410055553F /* UserPhotoCollectionViewCell.swift in Sources */,
 				877ED1AE25C366D1009F20A4 /* AuthorizationService.swift in Sources */,
 				87ECB55825A8AA6E00420BFB /* SearchScreenView.swift in Sources */,
 				87DFC78F25BB766C00CFD457 /* SignUpScreenView.swift in Sources */,
+				874E8B5425DD64030055553F /* ProfileResponseModel.swift in Sources */,
 				87DFC77B25BB6C7D00CFD457 /* EnterPasswordScreenViewController.swift in Sources */,
+				874E8AB425DB14D80055553F /* UploadPhotosScreenView.swift in Sources */,
+				874E8B4C25DC7D380055553F /* ProfileService.swift in Sources */,
 				87ECB56325A8ACC400420BFB /* SearchNavigationController.swift in Sources */,
+				874E8AB525DB14D80055553F /* UploadPhotosScreenViewController.swift in Sources */,
 				87EBF0F525C4AEB100444694 /* Range+Ext.swift in Sources */,
 				87ECB54E25A8AA6700420BFB /* AuthorizationScreenViewController.swift in Sources */,
 				877ED1C825C36FB5009F20A4 /* ProgressHelper.swift in Sources */,
 				87A0E02525C422730045E306 /* AppMainNavigationController.swift in Sources */,
 				877ED1C125C367AF009F20A4 /* DefaultResponseModel.swift in Sources */,
+				874E8AD325DB1C4A0055553F /* Notification+name.swift in Sources */,
 				87A0E02D25C422C80045E306 /* MainScreenViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -886,7 +1010,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = 6Y97YM76EY;
 				INFOPLIST_FILE = Avinash/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -908,7 +1032,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = 6Y97YM76EY;
 				INFOPLIST_FILE = Avinash/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;

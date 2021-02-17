@@ -17,6 +17,7 @@ class CustomTextField: UIView, ErrorBehaviour {
             return textField.text
         }
         set {
+            textFieldDidBeginEditing(textField)
             textField.text = newValue
             textFieldDidEndEditing(textField)
         }
@@ -154,6 +155,7 @@ extension CustomTextField {
     
     enum TextFieldType {
         case name
+        case location
         case email
         case password
         case passwordExt
@@ -163,6 +165,8 @@ extension CustomTextField {
             switch self {
             case .name:
                 return "name".localized()
+            case .location:
+                return "location".localized()
             case .email:
                 return "email".localized()
             case .password:
@@ -179,7 +183,8 @@ extension CustomTextField {
             case .name,
                  .password,
                  .passwordExt,
-                 .retypePassword:
+                 .retypePassword,
+                 .location:
                 return .default
             case .email:
                 return .emailAddress

@@ -89,7 +89,12 @@ extension SignUpScreenViewController {
             do {
                 let defaultResponseModel = try JSONDecoder().decode(DefaultResponseModel.self, from: data)
                 if defaultResponseModel.status {
-                    AuthorizationService.shared.state = .authorized
+                    let profileModel = try JSONDecoder().decode(ProfileResponseModel.self, from: data)
+                    AuthorizationService.shared.networkToken = profileModel.profile.accessToken
+                    
+                    let settingsViewController = SettingsScreenViewController()
+                    settingsViewController.profileModel = profileModel
+                    self.navigationController?.pushViewController(settingsViewController, animated: true)
                 } else {
                     AlertHelper.show(message: defaultResponseModel.errorText, controller: self)
                 }

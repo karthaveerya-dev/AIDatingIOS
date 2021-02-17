@@ -30,6 +30,11 @@ class EnterPasswordScreenViewController: UIViewController {
         mainView.passwordTextField.textField.becomeFirstResponder()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        mainView.passwordTextField.textField.resignFirstResponder()
+    }
+    
     private func initViewController() {
         //close screen navBar button
         let leftBarButton = UIBarButtonItem(customView: mainView.backButton)

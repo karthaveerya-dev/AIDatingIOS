@@ -44,8 +44,8 @@ class NetworkHelper: NSObject {
             params.keys.enumerated().forEach({ (index, key) in
                 if let value = params[key] {
                     if let image = value as? UIImage,
-                        let imageData = image.pngData() {
-                        formData.append(imageData, withName: key, fileName: "file.png", mimeType: "image/png")
+                       let imageData = image.jpegData(compressionQuality: 0.6) {
+                        formData.append(imageData, withName: key, fileName: "file.jpeg", mimeType: "image/jpeg")
                     } else {
                         if let valueString = value as? String,
                             let valueData = valueString.data(using: .utf8) {

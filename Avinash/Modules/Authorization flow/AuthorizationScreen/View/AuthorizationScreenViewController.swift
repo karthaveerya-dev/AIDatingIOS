@@ -32,11 +32,15 @@ class AuthorizationScreenViewController: UIViewController {
         initViewController()
     }
     
-    private func initViewController() {
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
         GIDSignIn.sharedInstance()?.clientID = "473811394390-m1t8il4dr82ovahe2lhda9onchtmpg2s.apps.googleusercontent.com"
         GIDSignIn.sharedInstance().delegate = self
         GIDSignIn.sharedInstance()?.presentingViewController = self
-        
+    }
+    
+    private func initViewController() {
         //close screen navBar button
         mainView.authType = authType
         

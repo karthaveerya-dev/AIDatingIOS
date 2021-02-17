@@ -12,6 +12,10 @@ import UIKit
         return UIColor(red: r / maxValue, green: g / maxValue, blue: b / maxValue, alpha: a)
     }
     
+    enum Button {
+        static let customPurple = UIColor.rgba(112, 27, 84, 1)
+    }
+    
     enum MainScreenGradient {
         static let startColor = UIColor.rgba(112, 27, 84, 1)
         static let endColor = UIColor.rgba(235, 81, 82, 1)
@@ -23,5 +27,11 @@ import UIKit
     
     enum ActivityIndicator {
         static let customPurple = UIColor.rgba(112, 27, 84, 1)
+    }
+    
+    enum AgeSlider {
+        static let handleBorderColor = UIColor.rgba(150, 44, 83, 1)
+        static let colorBetweenHandles = UIColor.white
+        static let colorNotBetweenHandles = UIColor.white.withAlphaComponent(0.5)
     }
 }

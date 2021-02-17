@@ -8,6 +8,7 @@ target 'AIDating' do
   # Pods for AIDating
   pod 'SnapKit'
   pod 'Alamofire'
+  pod 'RangeSeekSlider'
   
   #facebook auth
   pod 'FBSDKLoginKit'

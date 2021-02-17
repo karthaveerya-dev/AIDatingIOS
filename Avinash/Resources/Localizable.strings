@@ -32,6 +32,14 @@
 "and" = "and";
 "terms" = "Terms";
 "privacy_statement" = "Privacy Statement";
+"settings" = "Settings";
+"location" = "Location";
+"looking_to_meet" = "I am looking to meet";
+"male" = "Male";
+"female" = "Female";
+"age_between" = "Age between %.0f and %.0f";
+"search_up_to" = "Search from %.0f to %.0f miles";
+"upload_photos" = "Upload photos";
 
 //NETWORK ERRORS
 "error_parsing_json" = "Data from server is corrupted";
