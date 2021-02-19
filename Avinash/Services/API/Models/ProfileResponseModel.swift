@@ -16,7 +16,7 @@ struct ProfileResponseModel: Codable {
 }
 
 struct ProfileModel: Codable {
-    var userName: String
+    var userName: String?
     var userID: Int
     var email: String
     var status: Int

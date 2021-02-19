@@ -52,6 +52,16 @@ class EnterPasswordScreenViewController: UIViewController {
 
 //MARK: - helpers and handlers
 extension EnterPasswordScreenViewController {
+    private func openSettingsScreen(profileModel: ProfileResponseModel) {
+        let settingsViewController = SettingsScreenViewController()
+        
+        let backButton = UIBarButtonItem(title: "", style: .plain, target: self.navigationController, action: nil)
+        settingsViewController.navigationItem.leftBarButtonItem = backButton
+        
+        settingsViewController.profileModel = profileModel
+        self.navigationController?.pushViewController(settingsViewController, animated: true)
+    }
+    
     @objc private func backButtonTapped(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
     }
@@ -61,8 +71,8 @@ extension EnterPasswordScreenViewController {
             return
         }
         
-        mainView.signInButton.isEnabled = password.length > 8
-        mainView.signInButton.alpha = (password.length > 8 ? 1 : 0.5)
+        mainView.signInButton.isEnabled = password.length >= 8
+        mainView.signInButton.alpha = (password.length >= 8 ? 1 : 0.5)
     }
     
     @objc private func signInButtonTapped(_ sender: UIButton) {
@@ -84,7 +94,15 @@ extension EnterPasswordScreenViewController {
             do {
                 let defaultResponseModel = try JSONDecoder().decode(DefaultResponseModel.self, from: data)
                 if defaultResponseModel.status {
-                    AuthorizationService.shared.state = .authorized
+                    let profileModel = try JSONDecoder().decode(ProfileResponseModel.self, from: data)
+                    AuthorizationService.shared.networkToken = profileModel.profile.accessToken
+                    
+                    if defaultResponseModel.statusCode == 2 {
+                        //need to get profile settings
+                        self.openSettingsScreen(profileModel: profileModel)
+                    } else {
+                        AuthorizationService.shared.state = .authorized
+                    }
                 } else {
                     AlertHelper.show(message: defaultResponseModel.errorText, controller: self)
                 }

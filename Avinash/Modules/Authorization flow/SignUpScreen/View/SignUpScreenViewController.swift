@@ -44,6 +44,16 @@ class SignUpScreenViewController: UIViewController {
 
 //MARK: - helpers and handlers
 extension SignUpScreenViewController {
+    private func openSettingsScreen(profileModel: ProfileResponseModel) {
+        let settingsViewController = SettingsScreenViewController()
+        
+        let backButton = UIBarButtonItem(title: "", style: .plain, target: self.navigationController, action: nil)
+        settingsViewController.navigationItem.leftBarButtonItem = backButton
+        
+        settingsViewController.profileModel = profileModel
+        self.navigationController?.pushViewController(settingsViewController, animated: true)
+    }
+    
     @objc private func backButtonTapped(_ sender: UIButton) {
         navigationController?.popViewController(animated: true)
     }
@@ -65,7 +75,7 @@ extension SignUpScreenViewController {
         
         let isValidated = !name.isEmptyOrTooShort() &&
                           email.isValidEmail() &&
-                          password.length > 8
+                          password.length >= 8
         
         mainView.signUpButton.alpha = (isValidated ? 1 : 0.5)
         mainView.signUpButton.isEnabled = isValidated
@@ -92,9 +102,7 @@ extension SignUpScreenViewController {
                     let profileModel = try JSONDecoder().decode(ProfileResponseModel.self, from: data)
                     AuthorizationService.shared.networkToken = profileModel.profile.accessToken
                     
-                    let settingsViewController = SettingsScreenViewController()
-                    settingsViewController.profileModel = profileModel
-                    self.navigationController?.pushViewController(settingsViewController, animated: true)
+                    self.openSettingsScreen(profileModel: profileModel)
                 } else {
                     AlertHelper.show(message: defaultResponseModel.errorText, controller: self)
                 }

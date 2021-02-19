@@ -35,8 +35,12 @@ class UploadPhotosScreenViewController: UIViewController {
         navigationItem.leftBarButtonItem = leftBarButton
         
         //fake init photo models
-        for _ in 0 ... 8 {
-            let model = PhotoModel()
+        for idx in 0 ... 8 {
+            var model = PhotoModel()
+            if idx == 0 {
+                model.image = UIImage(named: "avatarImage")
+            }
+            
             photosModel.append(model)
         }
         

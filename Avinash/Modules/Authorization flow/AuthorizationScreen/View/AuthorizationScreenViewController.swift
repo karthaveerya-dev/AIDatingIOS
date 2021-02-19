@@ -61,6 +61,16 @@ class AuthorizationScreenViewController: UIViewController {
 
 //MARK: - helpers and handlers
 extension AuthorizationScreenViewController {
+    private func openSettingsScreen(profileModel: ProfileResponseModel) {
+        let settingsViewController = SettingsScreenViewController()
+        
+        let backButton = UIBarButtonItem(title: "", style: .plain, target: self.navigationController, action: nil)
+        settingsViewController.navigationItem.leftBarButtonItem = backButton
+        
+        settingsViewController.profileModel = profileModel
+        self.navigationController?.pushViewController(settingsViewController, animated: true)
+    }
+    
     @objc private func backButtonTapped(_ sender: UIButton) {
         if authType == .signIn {
             self.dismiss(animated: true, completion: nil)
@@ -174,7 +184,15 @@ extension AuthorizationScreenViewController {
             do {
                 let defaultResponseModel = try JSONDecoder().decode(DefaultResponseModel.self, from: data)
                 if defaultResponseModel.status {
-                    AuthorizationService.shared.state = .authorized
+                    let profileModel = try JSONDecoder().decode(ProfileResponseModel.self, from: data)
+                    AuthorizationService.shared.networkToken = profileModel.profile.accessToken
+                    
+                    if defaultResponseModel.statusCode == 2 {
+                        //need to get profile settings
+                        self.openSettingsScreen(profileModel: profileModel)
+                    } else {
+                        AuthorizationService.shared.state = .authorized
+                    }
                 } else {
                     AlertHelper.show(message: defaultResponseModel.errorText, controller: self)
                 }

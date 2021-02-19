@@ -49,16 +49,7 @@ class SettingsScreenViewController: UIViewController {
         //location
         LocationService.shared.delegate = self
         LocationService.shared.locationManager.requestWhenInUseAuthorization()
-        
-        //close screen navBar button
-        let leftBarButton = UIBarButtonItem(customView: mainView.backButton)
-        leftBarButton.customView?.snp.updateConstraints({ (make) in
-            make.width.equalTo(40)
-            make.height.equalTo(44)
-        })
-        navigationItem.leftBarButtonItem = leftBarButton
-        
-        mainView.backButton.addTarget(self, action: #selector(backButtonTapped(_:)), for: .touchUpInside)
+
         mainView.nextButton.addTarget(self, action: #selector(nextButtonTapped(_:)), for: .touchUpInside)
         
         mainView.maleLabel.delegate = self
@@ -82,10 +73,6 @@ class SettingsScreenViewController: UIViewController {
 
 //MARK: - helpers and handlers
 extension SettingsScreenViewController {
-    @objc private func backButtonTapped(_ sender: UIButton) {
-        self.navigationController?.popViewController(animated: true)
-    }
-    
     @objc private func passwordTextFieldDidChangeValue(_ sender: UITextField) {
         guard let name = mainView.nameTextField.text,
               let location = mainView.locationTextField.text,
