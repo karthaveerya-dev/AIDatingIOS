@@ -50,7 +50,6 @@ extension SignUpScreenViewController {
         let backButton = UIBarButtonItem(title: "", style: .plain, target: self.navigationController, action: nil)
         settingsViewController.navigationItem.leftBarButtonItem = backButton
         
-        settingsViewController.profileModel = profileModel
         self.navigationController?.pushViewController(settingsViewController, animated: true)
     }
     

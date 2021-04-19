@@ -9,6 +9,14 @@ import UIKit
 import RangeSeekSlider
 
 class SettingsScreenView: BaseBackgroundedView {
+    var backButton: UIButton = {
+        let obj = UIButton(type: .system)
+        obj.imageEdgeInsets = UIEdgeInsets(top: -3, left: 0, bottom: 0, right: 0)
+        obj.setImage(UIImage(named: "backIcon")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        obj.translatesAutoresizingMaskIntoConstraints = false
+        return obj
+    }()
+    
     var titleLabel: UILabel = {
         let obj = UILabel()
         obj.font = UIFont.ProximaNovaBold(size: 30)

@@ -22,7 +22,11 @@ class SettingsScreenViewController: UIViewController {
     var name: String = ""
     var locationString = ""
     
-    var profileModel: ProfileResponseModel?
+    var profileModel: ProfileDetailsModel? {
+        didSet {
+            fillValues()
+        }
+    }
     
     // MARK: - Functions
     override func viewDidLoad() {
@@ -49,7 +53,7 @@ class SettingsScreenViewController: UIViewController {
         //location
         LocationService.shared.delegate = self
         LocationService.shared.locationManager.requestWhenInUseAuthorization()
-
+        
         mainView.nextButton.addTarget(self, action: #selector(nextButtonTapped(_:)), for: .touchUpInside)
         
         mainView.maleLabel.delegate = self
@@ -61,11 +65,31 @@ class SettingsScreenViewController: UIViewController {
         mainView.nameTextField.textField.addTarget(self, action: #selector(passwordTextFieldDidChangeValue(_:)), for: .editingChanged)
         mainView.locationTextField.textField.addTarget(self, action: #selector(passwordTextFieldDidChangeValue(_:)), for: .editingChanged)
         
-        //Update location string
-        if let latitude = LocationService.shared.latitude,
-           let longtitude = LocationService.shared.longtitude {
-            LocationService.shared.getLocationString(lat: latitude, lon: longtitude) { [weak self] (locationString) in
-                self?.mainView.locationTextField.text = locationString
+        //EDITING PROFILE
+        if let _ = self.profileModel {
+            let leftBarButton = UIBarButtonItem(customView: mainView.backButton)
+            leftBarButton.customView?.snp.updateConstraints({ (make) in
+                make.width.equalTo(40)
+                make.height.equalTo(44)
+            })
+            navigationItem.leftBarButtonItem = leftBarButton
+            
+            mainView.nextButton.isEnabled = true
+            mainView.nextButton.alpha = 1
+            
+            let attributedString = NSAttributedString(string: "save".localized(),
+                                                      attributes: [.foregroundColor: UIColor.black,
+                                                                   .font: UIFont.ProximaNovaBold(size: 16) as Any])
+            mainView.nextButton.setAttributedTitle(attributedString, for: .normal)
+            
+            mainView.backButton.addTarget(self, action: #selector(backButtonTapped(_:)), for: .touchUpInside)
+        } else {
+            //Update location string
+            if let latitude = LocationService.shared.latitude,
+               let longtitude = LocationService.shared.longtitude {
+                LocationService.shared.getLocationString(lat: latitude, lon: longtitude) { [weak self] (locationString) in
+                    self?.mainView.locationTextField.text = locationString
+                }
             }
         }
     }
@@ -73,6 +97,47 @@ class SettingsScreenViewController: UIViewController {
 
 //MARK: - helpers and handlers
 extension SettingsScreenViewController {
+    @objc private func backButtonTapped(_ sender: UIButton) {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    private func fillValues() {
+        guard let profileModel = profileModel else {
+            return
+        }
+        
+        lookingForType = profileModel.sex
+        minAge = profileModel.ageFrom
+        maxAge = profileModel.ageTo
+        minDistance = profileModel.distanceFrom
+        maxDistance = profileModel.distanceTo
+        name = profileModel.userName
+        locationString = profileModel.location
+        
+        switch lookingForType {
+        case .male:
+            mainView.maleLabel.lookingForLabelStatus = .selected
+            mainView.femaleLabel.lookingForLabelStatus = .unselected
+        case .female:
+            mainView.femaleLabel.lookingForLabelStatus = .selected
+            mainView.maleLabel.lookingForLabelStatus = .unselected
+        }
+        
+        mainView.nameTextField.text = name
+        
+        mainView.ageRangeSlider.selectedMinValue = CGFloat(minAge)
+        mainView.ageRangeSlider.selectedMaxValue = CGFloat(maxAge)
+        
+        mainView.distanceRangeSlider.selectedMinValue = CGFloat(minDistance)
+        mainView.distanceRangeSlider.selectedMaxValue = CGFloat(maxDistance)
+        
+        mainView.locationTextField.text = locationString
+        
+        //uopdate UI
+        self.rangeSeekSlider(mainView.ageRangeSlider, didChange: CGFloat(minAge), maxValue: CGFloat(maxAge))
+        self.rangeSeekSlider(mainView.distanceRangeSlider, didChange: CGFloat(minDistance), maxValue: CGFloat(maxDistance))
+    }
+    
     @objc private func passwordTextFieldDidChangeValue(_ sender: UITextField) {
         guard let name = mainView.nameTextField.text,
               let location = mainView.locationTextField.text,
@@ -95,10 +160,6 @@ extension SettingsScreenViewController {
     }
     
     @objc private func nextButtonTapped(_ sender: UIButton) {
-        guard let _ = self.profileModel?.profile else {
-            return
-        }
-        
         ProgressHelper.show()
         ProfileService.shared.saveProfile(username: name,
                                           locationString: locationString,
@@ -117,8 +178,14 @@ extension SettingsScreenViewController {
             do {
                 let defaultResponseModel = try JSONDecoder().decode(DefaultResponseModel.self, from: data)
                 if defaultResponseModel.status {
-                    let uploadPhotosViewController = UploadPhotosScreenViewController()
-                    self.navigationController?.pushViewController(uploadPhotosViewController, animated: true)
+                    if let _ = self.profileModel {
+                        //editing existing profile
+                        self.navigationController?.popViewController(animated: true)
+                    } else {
+                        //registering new account
+                        let uploadPhotosViewController = UploadPhotosScreenViewController()
+                        self.navigationController?.pushViewController(uploadPhotosViewController, animated: true)
+                    }
                 } else {
                     AlertHelper.show(message: defaultResponseModel.errorText, controller: self)
                 }

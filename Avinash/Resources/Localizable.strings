@@ -40,6 +40,9 @@
 "age_between" = "Age between %.0f and %.0f";
 "search_up_to" = "Search from %.0f to %.0f miles";
 "upload_photos" = "Upload photos";
+"profile" = "Profile";
+"connect_facebook" = "Connect Facebook";
+"save" = "Save";
 
 //NETWORK ERRORS
 "error_parsing_json" = "Data from server is corrupted";

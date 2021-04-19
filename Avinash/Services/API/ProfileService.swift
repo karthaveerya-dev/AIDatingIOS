@@ -37,6 +37,7 @@ class ProfileService: NSObject {
             }
         }
     }
+    
     func saveProfile(username: String,
                      locationString: String,
                      distanceFrom: Int,
@@ -77,5 +78,88 @@ class ProfileService: NSObject {
                 }
             }
         }
+    }
+    
+    func getProfile(handleNetworkError: ((NetworkError)->Void)?,
+                    success: @escaping (Data) -> Void) {
+        let method = "/api/profile/get-profile"
+        let params = [String:Any]()
+        
+        var headers = [String: String]()
+        headers["accessToken"] = AuthorizationService.shared.networkToken
+        
+        api.post(method: method, params: params, headers: headers, error: { (error) in
+            if let handleNetworkError = handleNetworkError {
+                handleNetworkError(error)
+            }
+        }) { (res) in
+            if let data = try? JSONSerialization.data(withJSONObject: res as Any, options: .prettyPrinted) {
+                success(data)
+            } else {
+                if let handleNetworkError = handleNetworkError {
+                    handleNetworkError(.errorParsingJson)
+                }
+            }
+        }
+    }
+    
+    func checkIfFacebookConnected(handleNetworkError: ((NetworkError)->Void)?,
+                                  success: @escaping (Data) -> Void) {
+        let method = "/api/user/check-social-token-status"
+        var params = [String:Any]()
+        params["social_net"] = SocialNetworks.facebook.rawValue
+        
+        var headers = [String: String]()
+        headers["accessToken"] = AuthorizationService.shared.networkToken
+        
+        api.post(method: method, params: params, headers: headers, error: { (error) in
+            if let handleNetworkError = handleNetworkError {
+                handleNetworkError(error)
+            }
+        }) { (res) in
+            if let data = try? JSONSerialization.data(withJSONObject: res as Any, options: .prettyPrinted) {
+                success(data)
+            } else {
+                if let handleNetworkError = handleNetworkError {
+                    handleNetworkError(.errorParsingJson)
+                }
+            }
+        }
+    }
+    
+    func saveFacebookToken(accessToken: String,
+                           facebookUserID: String,
+                           handleNetworkError: ((NetworkError)->Void)?,
+                           success: @escaping (Data) -> Void) {
+        let method = "/api/user/save-social-token"
+        
+        var params = [String:Any]()
+        params["social_token"] = accessToken
+        params["social_net"] = SocialNetworks.facebook.rawValue
+        params["key"] = facebookUserID
+        
+        var headers = [String: String]()
+        headers["accessToken"] = AuthorizationService.shared.networkToken
+        
+        api.post(method: method, params: params, headers: headers, error: { (error) in
+            if let handleNetworkError = handleNetworkError {
+                handleNetworkError(error)
+            }
+        }) { (res) in
+            if let data = try? JSONSerialization.data(withJSONObject: res as Any, options: .prettyPrinted) {
+                success(data)
+            } else {
+                if let handleNetworkError = handleNetworkError {
+                    handleNetworkError(.errorParsingJson)
+                }
+            }
+        }
+    }
+}
+
+extension ProfileService {
+    enum SocialNetworks: Int {
+        case facebook = 1
+        case gmail = 2
     }
 }

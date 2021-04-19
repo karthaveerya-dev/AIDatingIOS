@@ -133,12 +133,14 @@ class AuthorizationService: NSObject {
         }
     }
     
-    func signInWithGoogle(email: String,
+    func signInWithGoogle(networkType: SocialNetworkType,
+                          email: String,
                           token: String,
                           handleNetworkError: ((NetworkError)->Void)?, success: @escaping (Data) -> Void) {
         let method = "/api/user/ragoogle"
         var params = [String:Any]()
         
+        params["social_net"] = networkType.rawValue
         params["email"] = email
         params["token"] = token
         
@@ -162,5 +164,10 @@ extension AuthorizationService {
     enum AuthorizationState: Int {
         case noneAuthorized = 0
         case authorized = 1
+    }
+    
+    enum SocialNetworkType: Int {
+        case facebook = 0
+        case google = 1
     }
 }

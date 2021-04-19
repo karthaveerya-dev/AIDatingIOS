@@ -67,7 +67,6 @@ extension AuthorizationScreenViewController {
         let backButton = UIBarButtonItem(title: "", style: .plain, target: self.navigationController, action: nil)
         settingsViewController.navigationItem.leftBarButtonItem = backButton
         
-        settingsViewController.profileModel = profileModel
         self.navigationController?.pushViewController(settingsViewController, animated: true)
     }
     
@@ -155,7 +154,7 @@ extension AuthorizationScreenViewController {
                         if let resultDict = result as? [String: Any] {
                             if let email = resultDict["email"] as? String {
                                 debugPrint("Successfully got Facebook profile information")
-                                self?.signUpWithSocialNetwork(email: email, token: facebookToken.userID)
+                                self?.signUpWithSocialNetwork(socialNetworkType: .facebook, email: email, token: facebookToken.userID)
                             }
                         }
                     }
@@ -173,9 +172,10 @@ extension AuthorizationScreenViewController {
         }
     }
     
-    private func signUpWithSocialNetwork(email: String, token: String) {
+    private func signUpWithSocialNetwork(socialNetworkType: AuthorizationService.SocialNetworkType, email: String, token: String) {
         ProgressHelper.show()
-        AuthorizationService.shared.signInWithGoogle(email: email,
+        AuthorizationService.shared.signInWithGoogle(networkType: socialNetworkType,
+                                                     email: email,
                                                      token: token) { (error) in
             ProgressHelper.hide()
             AlertHelper.show(message: error.localizedDescription)
@@ -232,7 +232,7 @@ extension AuthorizationScreenViewController: GIDSignInDelegate {
         debugPrint("familyName - \(familyName ?? "nil")")
         debugPrint("email - \(email ?? "nil")")
         
-        signUpWithSocialNetwork(email: email ?? "", token: idToken ?? "")
+        signUpWithSocialNetwork(socialNetworkType: .google, email: email ?? "", token: idToken ?? "")
     }
     
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!,

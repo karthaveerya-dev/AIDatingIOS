@@ -65,6 +65,8 @@
 		87ECB56025A8AB9F00420BFB /* String+localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ECB55F25A8AB9F00420BFB /* String+localized.swift */; };
 		87ECB56325A8ACC400420BFB /* SearchNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ECB56225A8ACC400420BFB /* SearchNavigationController.swift */; };
 		87ECB56625A8ACEB00420BFB /* AuthorizationNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ECB56525A8ACEB00420BFB /* AuthorizationNavigationController.swift */; };
+		87F52BBB262A3CEC00EB155F /* CheckFacebookModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F52BBA262A3CEC00EB155F /* CheckFacebookModel.swift */; };
+		87F52BBE262B4B4A00EB155F /* ProfileDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F52BBD262B4B4A00EB155F /* ProfileDetailsModel.swift */; };
 		A19DBD5395EC33D9400EE23C /* Pods_AIDating.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 826D5E62CE966FC8B07C84A6 /* Pods_AIDating.framework */; };
 /* End PBXBuildFile section */
 
@@ -130,6 +132,8 @@
 		87ECB55F25A8AB9F00420BFB /* String+localized.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+localized.swift"; sourceTree = "<group>"; };
 		87ECB56225A8ACC400420BFB /* SearchNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchNavigationController.swift; sourceTree = "<group>"; };
 		87ECB56525A8ACEB00420BFB /* AuthorizationNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationNavigationController.swift; sourceTree = "<group>"; };
+		87F52BBA262A3CEC00EB155F /* CheckFacebookModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckFacebookModel.swift; sourceTree = "<group>"; };
+		87F52BBD262B4B4A00EB155F /* ProfileDetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailsModel.swift; sourceTree = "<group>"; };
 		9B7CFB11EB371F7300C06B09 /* Pods-AIDating.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AIDating.release.xcconfig"; path = "Target Support Files/Pods-AIDating/Pods-AIDating.release.xcconfig"; sourceTree = "<group>"; };
 		A47482B739CB6A16E523E417 /* Pods-AIDating.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AIDating.debug.xcconfig"; path = "Target Support Files/Pods-AIDating/Pods-AIDating.debug.xcconfig"; sourceTree = "<group>"; };
 		C761FBA525D8B923AEE64EDE /* Pods-Avinash.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Avinash.debug.xcconfig"; path = "Target Support Files/Pods-Avinash/Pods-Avinash.debug.xcconfig"; sourceTree = "<group>"; };
@@ -265,6 +269,8 @@
 			children = (
 				877ED1C025C367AF009F20A4 /* DefaultResponseModel.swift */,
 				874E8B5325DD64030055553F /* ProfileResponseModel.swift */,
+				87F52BBA262A3CEC00EB155F /* CheckFacebookModel.swift */,
+				87F52BBD262B4B4A00EB155F /* ProfileDetailsModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -854,6 +860,7 @@
 				87DFC75525BB235300CFD457 /* Font+Ext.swift in Sources */,
 				87ECB56625A8ACEB00420BFB /* AuthorizationNavigationController.swift in Sources */,
 				874E8AEB25DB35410055553F /* UserPhotoCollectionViewCell.swift in Sources */,
+				87F52BBE262B4B4A00EB155F /* ProfileDetailsModel.swift in Sources */,
 				877ED1AE25C366D1009F20A4 /* AuthorizationService.swift in Sources */,
 				87ECB55825A8AA6E00420BFB /* SearchScreenView.swift in Sources */,
 				87DFC78F25BB766C00CFD457 /* SignUpScreenView.swift in Sources */,
@@ -868,6 +875,7 @@
 				877ED1C825C36FB5009F20A4 /* ProgressHelper.swift in Sources */,
 				87A0E02525C422730045E306 /* AppMainNavigationController.swift in Sources */,
 				877ED1C125C367AF009F20A4 /* DefaultResponseModel.swift in Sources */,
+				87F52BBB262A3CEC00EB155F /* CheckFacebookModel.swift in Sources */,
 				874E8AD325DB1C4A0055553F /* Notification+name.swift in Sources */,
 				87A0E02D25C422C80045E306 /* MainScreenViewController.swift in Sources */,
 			);
@@ -1010,7 +1018,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 18;
 				DEVELOPMENT_TEAM = 6Y97YM76EY;
 				INFOPLIST_FILE = Avinash/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -1032,7 +1040,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 18;
 				DEVELOPMENT_TEAM = 6Y97YM76EY;
 				INFOPLIST_FILE = Avinash/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
