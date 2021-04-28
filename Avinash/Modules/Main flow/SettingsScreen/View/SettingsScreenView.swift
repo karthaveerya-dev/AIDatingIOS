@@ -95,7 +95,7 @@ class SettingsScreenView: BaseBackgroundedView {
     var distanceRangeSlider: RangeSeekSlider = {
         let obj = RangeSeekSlider()
         obj.minValue = 0
-        obj.maxValue = 10
+        obj.maxValue = 100
         obj.step = 1
         obj.handleColor = UIColor.white
         obj.handleBorderColor = UIColor.AgeSlider.handleBorderColor
@@ -118,6 +118,13 @@ class SettingsScreenView: BaseBackgroundedView {
         obj.setAttributedTitle(attributedString, for: .normal)
         obj.alpha = 0.5
         obj.isEnabled = false
+        return obj
+    }()
+    
+    var logOutButton: UIButton = {
+        var obj = UIButton(type: .system)
+        obj.setAttributedTitle(NSAttributedString(string: "Log out", attributes: [.font: UIFont.systemFont(ofSize: 20, weight: .bold), .foregroundColor: UIColor.white]), for: .normal)
+        obj.isHidden = true
         return obj
     }()
     
@@ -179,6 +186,7 @@ class SettingsScreenView: BaseBackgroundedView {
         addSubview(distanceLabel)
         addSubview(distanceRangeSlider)
         addSubview(nextButton)
+        addSubview(logOutButton)
         addSubview(termsAndConditionsTextView)
         
         titleLabel.snp.makeConstraints { (make) in
@@ -239,6 +247,11 @@ class SettingsScreenView: BaseBackgroundedView {
             make.height.equalTo(SizeHelper.sizeH(51))
         }
         
+        logOutButton.snp.makeConstraints { (make) in
+            make.bottom.equalTo(termsAndConditionsTextView.snp.top)
+            make.centerX.equalToSuperview()
+        }
+        
         termsAndConditionsTextView.snp.makeConstraints { (make) in
             make.left.right.equalToSuperview().inset(8)
             make.bottom.equalTo(safeAreaLayoutGuide.snp.bottom)
@@ -248,7 +261,7 @@ class SettingsScreenView: BaseBackgroundedView {
         
         //just to update labels first time
         updateAgeTitle(minValue: 18, maxValue: 65)
-        updateDistanceTitle(minValue: 0, maxValue: 10)
+        updateDistanceTitle(minValue: 0, maxValue: 100)
     }
 }
 
@@ -264,7 +277,12 @@ extension SettingsScreenView {
     }
     
     func updateDistanceTitle(minValue: CGFloat, maxValue: CGFloat) {
-        let distanceString = String.init(format: "search_up_to".localized(), minValue, maxValue)
+        var distanceString: String = ""
+        if maxValue == 100 {
+            distanceString = String.init(format: "search_up_to_max".localized(), minValue)
+        } else {
+            distanceString = String.init(format: "search_up_to".localized(), minValue, maxValue)
+        }
       
         distanceLabel.text = distanceString
         

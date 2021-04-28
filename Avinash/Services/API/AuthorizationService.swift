@@ -137,7 +137,7 @@ class AuthorizationService: NSObject {
                           email: String,
                           token: String,
                           handleNetworkError: ((NetworkError)->Void)?, success: @escaping (Data) -> Void) {
-        let method = "/api/user/ragoogle"
+        let method = "/api/user/rasocialnet"
         var params = [String:Any]()
         
         params["social_net"] = networkType.rawValue
@@ -167,7 +167,7 @@ extension AuthorizationService {
     }
     
     enum SocialNetworkType: Int {
-        case facebook = 0
-        case google = 1
+        case facebook = 1
+        case google = 2
     }
 }

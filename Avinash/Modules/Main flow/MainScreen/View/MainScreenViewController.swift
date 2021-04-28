@@ -21,8 +21,6 @@ class MainScreenViewController: UIViewController {
     }
     
     private func initViewController() {        
-        mainView.logOutButton.addTarget(self, action: #selector(logOutButtonTapped(_:)), for: .touchUpInside)
-        
         checkIfFacebookConnected()
         
         mainView.connectFacebookButton.addTarget(self, action: #selector(connectFacebookButtonTapped(_:)), for: .touchUpInside)
@@ -84,10 +82,6 @@ extension MainScreenViewController {
         }
         
     }
-    
-    @objc private func logOutButtonTapped(_ sender: UIButton) {
-        AuthorizationService.shared.state = .noneAuthorized
-    }
 }
 
 //MARK: - facebook sign in
@@ -131,6 +125,8 @@ extension MainScreenViewController {
                         let defaultResponseModel = try JSONDecoder().decode(DefaultResponseModel.self, from: data)
                         if defaultResponseModel.status {
                             self?.checkIfFacebookConnected()
+                        } else if let errorText = defaultResponseModel.errorText {
+                            AlertHelper.show(message: errorText, controller: self)
                         }
                     } catch let error {
                         debugPrint(error.localizedDescription)

@@ -10,7 +10,10 @@ import UIKit
 class MainScreenView: BaseBackgroundedView {
     var isFacebookConnectedToProfile: Bool = false {
         didSet {
-            connectFacebookButton.isHidden = isFacebookConnectedToProfile
+            connectFacebookButton.isEnabled = !isFacebookConnectedToProfile
+            connectFacebookButton.alpha = (isFacebookConnectedToProfile ? 0.5 : 1 )
+            
+            faceboolStatusLabel.text = "status".localized() + (isFacebookConnectedToProfile ? "connected".localized() : "not_connected".localized())
         }
     }
     
@@ -25,7 +28,8 @@ class MainScreenView: BaseBackgroundedView {
     
     var connectFacebookButton: UIButton = {
         let obj = UIButton(type: .system)
-        obj.isHidden = true
+        obj.isEnabled = false
+        obj.alpha = 0.5
         obj.backgroundColor = .white
         obj.setImage(UIImage(named: "facebookIcon")?.withRenderingMode(.alwaysOriginal), for: .normal)
         obj.titleEdgeInsets = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
@@ -33,6 +37,12 @@ class MainScreenView: BaseBackgroundedView {
                                                   attributes: [.foregroundColor: UIColor.black,
                                                                .font: UIFont.ProximaNovaRegular(size: 20) as Any])
         obj.setAttributedTitle(attributedString, for: .normal)
+        return obj
+    }()
+    
+    var faceboolStatusLabel: UILabel = {
+        let obj = UILabel()
+        obj.text = "status".localized()
         return obj
     }()
     
@@ -46,11 +56,7 @@ class MainScreenView: BaseBackgroundedView {
         return obj
     }()
     
-    var logOutButton: UIButton = {
-        var obj = UIButton(type: .system)
-        obj.setTitle("Log out", for: .normal)
-        return obj
-    }()
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -65,9 +71,9 @@ class MainScreenView: BaseBackgroundedView {
     private func setup() {
         backgroundColor = .white
         
-        addSubview(logOutButton)
         addSubview(titleLabel)
         addSubview(connectFacebookButton)
+        addSubview(faceboolStatusLabel)
         addSubview(settingsButton)
         
         titleLabel.snp.makeConstraints { (make) in
@@ -81,15 +87,15 @@ class MainScreenView: BaseBackgroundedView {
             make.height.equalTo(SizeHelper.sizeH(51))
         }
         
+        faceboolStatusLabel.snp.makeConstraints { (make) in
+            make.left.right.equalTo(connectFacebookButton)
+            make.top.equalTo(connectFacebookButton.snp.bottom).offset(12)
+        }
+        
         settingsButton.snp.makeConstraints { (make) in
             make.left.right.equalToSuperview().inset(SizeHelper.sizeW(50))
             make.centerY.equalToSuperview()
             make.height.equalTo(SizeHelper.sizeH(51))
-        }
-        
-        logOutButton.snp.makeConstraints { (make) in
-            make.bottom.equalTo(safeAreaLayoutGuide)
-            make.centerX.equalToSuperview()
         }
     }
 }

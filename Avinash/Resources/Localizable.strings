@@ -38,11 +38,16 @@
 "male" = "Male";
 "female" = "Female";
 "age_between" = "Age between %.0f and %.0f";
+"age_between_max" = "Age between %.0f and MAX";
 "search_up_to" = "Search from %.0f to %.0f miles";
+"search_up_to_max" = "Search from %.0f to MAX miles";
 "upload_photos" = "Upload photos";
 "profile" = "Profile";
 "connect_facebook" = "Connect Facebook";
 "save" = "Save";
+"status" = "Status: ";
+"connected" = "connected";
+"not_connected" = "not connected";
 
 //NETWORK ERRORS
 "error_parsing_json" = "Data from server is corrupted";

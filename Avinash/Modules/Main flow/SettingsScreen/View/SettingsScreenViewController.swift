@@ -64,9 +64,12 @@ class SettingsScreenViewController: UIViewController {
         
         mainView.nameTextField.textField.addTarget(self, action: #selector(passwordTextFieldDidChangeValue(_:)), for: .editingChanged)
         mainView.locationTextField.textField.addTarget(self, action: #selector(passwordTextFieldDidChangeValue(_:)), for: .editingChanged)
+        mainView.logOutButton.addTarget(self, action: #selector(logOutButtonTapped(_:)), for: .touchUpInside)
         
         //EDITING PROFILE
         if let _ = self.profileModel {
+            mainView.logOutButton.isHidden = false
+            
             let leftBarButton = UIBarButtonItem(customView: mainView.backButton)
             leftBarButton.customView?.snp.updateConstraints({ (make) in
                 make.width.equalTo(40)
@@ -97,6 +100,10 @@ class SettingsScreenViewController: UIViewController {
 
 //MARK: - helpers and handlers
 extension SettingsScreenViewController {
+    @objc private func logOutButtonTapped(_ sender: UIButton) {
+        AuthorizationService.shared.state = .noneAuthorized
+    }
+    
     @objc private func backButtonTapped(_ sender: UIButton) {
         navigationController?.popViewController(animated: true)
     }
